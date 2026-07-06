@@ -1,0 +1,217 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.75rem;
+    --font-size-base: 14px;
+    --sidebar-width: 260px;
+    --editor-width: 100%;
+  }
+
+  .theme-dark-orange {
+    --background: #0a0a0f;
+    --foreground: #e4e4e7;
+    --card: #12121a;
+    --card-foreground: #e4e4e7;
+    --popover: #12121a;
+    --popover-foreground: #e4e4e7;
+    --primary: #ff8c00;
+    --primary-foreground: #0a0a0f;
+    --secondary: #1c1c26;
+    --secondary-foreground: #e4e4e7;
+    --muted: #1c1c26;
+    --muted-foreground: #7f7f8f;
+    --accent: #1c1c26;
+    --accent-foreground: #e4e4e7;
+    --destructive: #ef4444;
+    --destructive-foreground: #e4e4e7;
+    --border: #1c1c26;
+    --input: #1c1c26;
+    --ring: #ff8c00;
+    --sidebar: #0e0e14;
+    --sidebar-foreground: #c4c4c7;
+    --sidebar-border: #1a1a24;
+    --scrollbar-thumb: #2a2a3a;
+    --scrollbar-track: #0e0e14;
+  }
+
+  .theme-hacker-green {
+    --background: #0a0f0a;
+    --foreground: #ccffcc;
+    --card: #0f140f;
+    --card-foreground: #ccffcc;
+    --popover: #0f140f;
+    --popover-foreground: #ccffcc;
+    --primary: #00ff41;
+    --primary-foreground: #0a0f0a;
+    --secondary: #1a2a1a;
+    --secondary-foreground: #ccffcc;
+    --muted: #1a2a1a;
+    --muted-foreground: #6a9a6a;
+    --accent: #1a2a1a;
+    --accent-foreground: #ccffcc;
+    --destructive: #ff3355;
+    --destructive-foreground: #ccffcc;
+    --border: #1a2a1a;
+    --input: #1a2a1a;
+    --ring: #00ff41;
+    --sidebar: #0c120c;
+    --sidebar-foreground: #aaddaa;
+    --sidebar-border: #1a2a1a;
+    --scrollbar-thumb: #2a4a2a;
+    --scrollbar-track: #0c120c;
+  }
+
+  .theme-cyber-blue {
+    --background: #0a0f1a;
+    --foreground: #c8d8ff;
+    --card: #0f1520;
+    --card-foreground: #c8d8ff;
+    --popover: #0f1520;
+    --popover-foreground: #c8d8ff;
+    --primary: #00b4ff;
+    --primary-foreground: #0a0f1a;
+    --secondary: #1a2540;
+    --secondary-foreground: #c8d8ff;
+    --muted: #1a2540;
+    --muted-foreground: #6a8ab0;
+    --accent: #1a2540;
+    --accent-foreground: #c8d8ff;
+    --destructive: #ff4466;
+    --destructive-foreground: #c8d8ff;
+    --border: #1a2540;
+    --input: #1a2540;
+    --ring: #00b4ff;
+    --sidebar: #0c1120;
+    --sidebar-foreground: #aac0e0;
+    --sidebar-border: #1a2540;
+    --scrollbar-thumb: #2a3a60;
+    --scrollbar-track: #0c1120;
+  }
+
+  .theme-purple-neon {
+    --background: #0f0a1a;
+    --foreground: #e0ccff;
+    --card: #140f20;
+    --card-foreground: #e0ccff;
+    --popover: #140f20;
+    --popover-foreground: #e0ccff;
+    --primary: #b400ff;
+    --primary-foreground: #0f0a1a;
+    --secondary: #221a40;
+    --secondary-foreground: #e0ccff;
+    --muted: #221a40;
+    --muted-foreground: #8a6ab0;
+    --accent: #221a40;
+    --accent-foreground: #e0ccff;
+    --destructive: #ff4488;
+    --destructive-foreground: #e0ccff;
+    --border: #221a40;
+    --input: #221a40;
+    --ring: #b400ff;
+    --sidebar: #110c20;
+    --sidebar-foreground: #c0aae0;
+    --sidebar-border: #221a40;
+    --scrollbar-thumb: #3a2a60;
+    --scrollbar-track: #110c20;
+  }
+
+  .theme-light {
+    --background: #f5f5f0;
+    --foreground: #1a1a24;
+    --card: #ffffff;
+    --card-foreground: #1a1a24;
+    --popover: #ffffff;
+    --popover-foreground: #1a1a24;
+    --primary: #ff8c00;
+    --primary-foreground: #ffffff;
+    --secondary: #e8e8e4;
+    --secondary-foreground: #1a1a24;
+    --muted: #e8e8e4;
+    --muted-foreground: #6a6a7a;
+    --accent: #e8e8e4;
+    --accent-foreground: #1a1a24;
+    --destructive: #ef4444;
+    --destructive-foreground: #ffffff;
+    --border: #d4d4d0;
+    --input: #d4d4d0;
+    --ring: #ff8c00;
+    --sidebar: #ecece8;
+    --sidebar-foreground: #3a3a4a;
+    --sidebar-border: #d4d4d0;
+    --scrollbar-thumb: #c0c0bc;
+    --scrollbar-track: #ecece8;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-size: var(--font-size-base);
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--muted-foreground);
+  }
+}
+
+@layer components {
+  .glass {
+    background: color-mix(in srgb, var(--card) 70%, transparent);
+    backdrop-filter: blur(20px);
+    border: 1px solid color-mix(in srgb, var(--border) 50%, transparent);
+  }
+
+  .glass-strong {
+    background: color-mix(in srgb, var(--card) 85%, transparent);
+    backdrop-filter: blur(40px);
+    border: 1px solid color-mix(in srgb, var(--border) 60%, transparent);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  }
+
+  .sidebar-panel {
+    background-color: var(--sidebar);
+    border-right: 1px solid var(--sidebar-border);
+  }
+
+  .note-card {
+    @apply rounded-lg p-3 transition-all duration-200 cursor-pointer;
+    background: color-mix(in srgb, var(--card) 70%, transparent);
+    backdrop-filter: blur(20px);
+    border: 1px solid color-mix(in srgb, var(--border) 50%, transparent);
+  }
+
+  .note-card:hover {
+    background: color-mix(in srgb, var(--accent) 50%, transparent);
+  }
+
+  .editor-container {
+    max-width: 56rem;
+    margin: 0 auto;
+    padding: 1.5rem 2rem;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
