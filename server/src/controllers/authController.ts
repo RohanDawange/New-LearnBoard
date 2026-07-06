@@ -1,15 +1,25 @@
 import { Request, Response } from 'express'
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
+import mongoose from 'mongoose'
 import User from '../models/User'
 
 const JWT_SECRET = process.env.JWT_SECRET || 'fallback-secret'
+
+function requireDB(req: Request, res: Response) {
+  if (mongoose.connection.readyState !== 1) {
+    res.status(503).json({ error: 'Database not connected. Set MONGODB_URI environment variable and restart.' })
+    return false
+  }
+  return true
+}
 
 const generateToken = (userId: string) => {
   return jwt.sign({ userId }, JWT_SECRET, { expiresIn: '7d' as any })
 }
 
 export const register = async (req: Request, res: Response) => {
+  if (!requireDB(req, res)) return
   try {
     const { name, email, password } = req.body
 
@@ -40,6 +50,7 @@ export const register = async (req: Request, res: Response) => {
 }
 
 export const login = async (req: Request, res: Response) => {
+  if (!requireDB(req, res)) return
   try {
     const { email, password } = req.body
 
@@ -72,6 +83,7 @@ export const login = async (req: Request, res: Response) => {
 }
 
 export const getProfile = async (req: Request, res: Response) => {
+  if (!requireDB(req, res)) return
   try {
     const userId = (req as any).userId
     const user = await User.findById(userId).select('-password')
@@ -93,6 +105,7 @@ export const getProfile = async (req: Request, res: Response) => {
 }
 
 export const updateProfile = async (req: Request, res: Response) => {
+  if (!requireDB(req, res)) return
   try {
     const userId = (req as any).userId
     const { name, bio, goals, avatar } = req.body
